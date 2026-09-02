@@ -1,0 +1,160 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-immersive-bg: #fff0f5;
+    --color-baby-pink: #fbcfe8;
+    --color-baby-pink-light: #fdf2f8;
+    --color-baby-pink-soft: #f472b6;
+    --color-rose-deep: #db2777;
+    --color-rose-dark: #be185d;
+    --color-rose-burgundy: #831843;
+    --color-rose-accent: #ec4899;
+  }
+
+  body {
+    background-color: #fff0f5;
+    background-image: 
+      radial-gradient(circle at 12% 15%, rgba(244, 114, 182, 0.22) 0%, transparent 45%),
+      radial-gradient(circle at 88% 75%, rgba(251, 146, 180, 0.20) 0%, transparent 45%),
+      radial-gradient(circle at 50% 40%, rgba(249, 168, 212, 0.12) 0%, transparent 60%),
+      radial-gradient(circle at 30% 90%, rgba(252, 231, 243, 0.6) 0%, transparent 50%);
+    color: #831843;
+    font-family: 'Cormorant Garamond', 'Georgia', serif;
+  }
+}
+
+.font-script {
+  font-family: 'Brush Script MT', 'Great Vibes', cursive;
+}
+
+.font-pinyon {
+  font-family: 'Pinyon Script', 'Great Vibes', cursive;
+}
+
+.font-alex {
+  font-family: 'Alex Brush', cursive;
+}
+
+.font-editorial {
+  font-family: 'Georgia', 'Cormorant Garamond', serif;
+}
+
+.font-sans {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+}
+
+/* Custom shimmer, float and glow */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(1.5deg); }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-14px) rotate(-1deg); }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 0.85; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.03); }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0.2; transform: scale(0.6) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1.2) rotate(90deg); }
+}
+
+.animate-shimmer {
+  background-size: 200% auto;
+  animation: shimmer 4s linear infinite;
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float-slow 7s ease-in-out infinite;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 3s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 16s linear infinite;
+}
+
+.animate-sparkle {
+  animation: sparkle 3s ease-in-out infinite;
+}
+
+/* Immersive UI Glassmorphic Surfaces in Baby Pink */
+.baby-pink-glass {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(251, 207, 232, 0.7);
+  box-shadow: 0 10px 30px -5px rgba(244, 114, 182, 0.14);
+}
+
+.lover-cloud-card {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(251, 207, 232, 0.8);
+  box-shadow: 0 12px 36px -8px rgba(236, 72, 153, 0.16);
+}
+
+.lover-cloud-card:hover {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(244, 114, 182, 0.85);
+}
+
+.immersive-accent-card {
+  background: linear-gradient(135deg, #f472b6 0%, #ec4899 50%, #db2777 100%);
+  color: #ffffff;
+  box-shadow: 0 14px 34px -8px rgba(236, 72, 153, 0.45);
+}
+
+.lover-gradient-text {
+  background: linear-gradient(135deg, #be185d 0%, #ec4899 50%, #f472b6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.polaroid-shadow {
+  box-shadow: 0 20px 40px -12px rgba(236, 72, 153, 0.2), 0 8px 20px -6px rgba(0, 0, 0, 0.06);
+}
+
+/* Custom Baby Pink Scrollbar */
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fff0f5;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #f472b6;
+  border-radius: 9999px;
+  border: 2px solid #fff0f5;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ec4899;
+}
+
