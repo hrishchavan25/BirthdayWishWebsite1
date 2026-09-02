@@ -1,6 +1,6 @@
 {
   "name": "Birthday Celebration (Taylor's Version)",
-  "description": "An elegant baby-pink birthday website celebrating 11 years of friendship with sweet memory chapters, interactive music player, photo carousel, and beaded keepsake bracelets.",
+  "description": "An elegant baby-pink birthday website celebrating 11 years of friendship with sweet memory chapters, interactive music player, photo carousel, and beaded keepsake bracelets with customizable charms and shapes.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

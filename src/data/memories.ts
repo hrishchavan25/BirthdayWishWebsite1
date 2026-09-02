@@ -232,12 +232,90 @@ export const POLAROID_PHOTOS: PolaroidPhoto[] = [
 ];
 
 export const DEFAULT_BRACELETS: FriendshipBraceletItem[] = [
-  { id: 'b1', text: 'BESTIE 11 YRS', colorScheme: 'rose', charm: '💖' },
-  { id: 'b2', text: 'SOUL SISTERS', colorScheme: 'pearl', charm: '⭐' },
-  { id: 'b3', text: 'FOREVER ALWAYS', colorScheme: 'gold', charm: '👑' },
-  { id: 'b4', text: 'DAY ONE BESTIE', colorScheme: 'lavender', charm: '💎' },
-  { id: 'b5', text: 'PURE MAGIC', colorScheme: 'champagne', charm: '✨' },
-  { id: 'b6', text: 'TIMELESS BOND', colorScheme: 'emerald', charm: '🌸' }
+  { 
+    id: 'b1', 
+    text: 'BESTIE 11 YRS', 
+    colorScheme: 'rose', 
+    charm: '💖',
+    leftCharm: '🎀',
+    rightCharm: '🌸',
+    dangleCharm: '💖',
+    dangleTag: '11 YRS',
+    beadShape: 'cube',
+    spacerStyle: 'heart',
+    cordStyle: 'pink_silk',
+    charmsList: ['🎀', '💖', '🌸']
+  },
+  { 
+    id: 'b2', 
+    text: 'SOUL SISTERS', 
+    colorScheme: 'pearl', 
+    charm: '⭐',
+    leftCharm: '✨',
+    rightCharm: '💎',
+    dangleCharm: '⭐',
+    dangleTag: 'BFF',
+    beadShape: 'round',
+    spacerStyle: 'star',
+    cordStyle: 'silver_sparkle',
+    charmsList: ['✨', '⭐', '💎']
+  },
+  { 
+    id: 'b3', 
+    text: 'FOREVER ALWAYS', 
+    colorScheme: 'gold', 
+    charm: '👑',
+    leftCharm: '👑',
+    rightCharm: '💫',
+    dangleCharm: '🕊️',
+    dangleTag: 'ALWAYS',
+    beadShape: 'crystal',
+    spacerStyle: 'gold_rondelle',
+    cordStyle: 'gold_chain',
+    charmsList: ['👑', '💫', '🕊️']
+  },
+  { 
+    id: 'b4', 
+    text: 'DAY ONE BESTIE', 
+    colorScheme: 'lavender', 
+    charm: '🦋',
+    leftCharm: '🦋',
+    rightCharm: '🌙',
+    dangleCharm: '💌',
+    dangleTag: 'DAY 1',
+    beadShape: 'cube',
+    spacerStyle: 'flower',
+    cordStyle: 'lavender_satin',
+    charmsList: ['🦋', '🌙', '💌']
+  },
+  { 
+    id: 'b5', 
+    text: 'HAPPY 11TH BDAY', 
+    colorScheme: 'strawberry', 
+    charm: '🎂',
+    leftCharm: '🍓',
+    rightCharm: '🧁',
+    dangleCharm: '🎂',
+    dangleTag: 'HBD',
+    beadShape: 'heart',
+    spacerStyle: 'heart',
+    cordStyle: 'pink_silk',
+    charmsList: ['🍓', '🎂', '🧁']
+  },
+  { 
+    id: 'b6', 
+    text: 'TIMELESS BOND', 
+    colorScheme: 'emerald', 
+    charm: '🍀',
+    leftCharm: '🍀',
+    rightCharm: '🌸',
+    dangleCharm: '🦄',
+    dangleTag: '2026',
+    beadShape: 'round',
+    spacerStyle: 'pearl',
+    cordStyle: 'gold_chain',
+    charmsList: ['🍀', '🌸', '🦄']
+  }
 ];
 
 export const DEFAULT_WISHES: BirthdayWish[] = [

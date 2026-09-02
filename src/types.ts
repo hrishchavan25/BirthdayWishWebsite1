@@ -38,11 +38,34 @@ export interface FriendshipYear {
   tags: string[];
 }
 
+export type BraceletColorScheme = 
+  | 'rose' 
+  | 'strawberry' 
+  | 'pearl' 
+  | 'gold' 
+  | 'lavender' 
+  | 'champagne' 
+  | 'emerald' 
+  | 'cotton_candy';
+
+export type BeadShape = 'cube' | 'round' | 'heart' | 'crystal';
+export type SpacerStyle = 'star' | 'heart' | 'pearl' | 'gold_rondelle' | 'flower' | 'none';
+export type CordStyle = 'pink_silk' | 'gold_chain' | 'silver_sparkle' | 'lavender_satin';
+
 export interface FriendshipBraceletItem {
   id: string;
   text: string;
-  colorScheme: 'rose' | 'pearl' | 'gold' | 'lavender' | 'champagne' | 'emerald';
+  colorScheme: BraceletColorScheme;
   charm: string;
+  leftCharm?: string;
+  rightCharm?: string;
+  dangleCharm?: string;
+  dangleTag?: string;
+  beadShape?: BeadShape;
+  spacerStyle?: SpacerStyle;
+  cordStyle?: CordStyle;
+  charmsList?: string[];
+  dedication?: string;
 }
 
 export interface BirthdayWish {

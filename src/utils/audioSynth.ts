@@ -258,6 +258,51 @@ class AudioEngine {
     });
   }
 
+  public playBeadClick() {
+    this.initContext();
+    if (!this.ctx || !this.masterGain) return;
+    const now = this.ctx.currentTime;
+    const osc = this.ctx.createOscillator();
+    const gain = this.ctx.createGain();
+    
+    // Short high pitched wooden/glass bead click
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(800 + Math.random() * 400, now);
+    osc.frequency.exponentialRampToValueAtTime(300, now + 0.06);
+
+    gain.gain.setValueAtTime(0.001, now);
+    gain.gain.linearRampToValueAtTime(0.08, now + 0.005);
+    gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.06);
+
+    osc.connect(gain);
+    gain.connect(this.masterGain);
+    osc.start(now);
+    osc.stop(now + 0.07);
+  }
+
+  public playCharmJingle() {
+    this.initContext();
+    if (!this.ctx || !this.masterGain) return;
+    const notes = ['A5', 'C#6', 'E6', 'A6'];
+    const now = this.ctx.currentTime;
+    notes.forEach((note, idx) => {
+      const freq = NOTE_FREQS[note];
+      if (!freq) return;
+      const osc = this.ctx!.createOscillator();
+      const gain = this.ctx!.createGain();
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(freq, now + idx * 0.04);
+      gain.gain.setValueAtTime(0.001, now + idx * 0.04);
+      gain.gain.linearRampToValueAtTime(0.09, now + idx * 0.04 + 0.01);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + idx * 0.04 + 0.35);
+
+      osc.connect(gain);
+      gain.connect(this.masterGain!);
+      osc.start(now + idx * 0.04);
+      osc.stop(now + idx * 0.04 + 0.4);
+    });
+  }
+
   public playBirthdayFanfare() {
     this.playHappyBirthday();
   }
