@@ -3,19 +3,12 @@ import { FriendshipYear } from '../types';
 import { FRIENDSHIP_YEARS } from '../data/memories';
 import { BookOpen, Calendar, Edit3, Check, X, Sparkles, Heart } from 'lucide-react';
 import { audioEngine } from '../utils/audioSynth';
+import { useSharedStorage } from '../utils/sharedStorage';
 
 const STORAGE_KEY = 'bestie_birthday_chapters_sweet_v2';
 
 export const FriendshipTimeline: React.FC = () => {
-  const [years, setYears] = useState<FriendshipYear[]>(() => {
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved) return JSON.parse(saved);
-    } catch (e) {
-      console.error(e);
-    }
-    return FRIENDSHIP_YEARS;
-  });
+  const [years, setYears] = useSharedStorage(STORAGE_KEY, FRIENDSHIP_YEARS);
 
   const [activeYearModal, setActiveYearModal] = useState<FriendshipYear | null>(null);
   const [editingYear, setEditingYear] = useState<FriendshipYear | null>(null);
@@ -23,14 +16,6 @@ export const FriendshipTimeline: React.FC = () => {
   const [editStory, setEditStory] = useState('');
   const [editKeyMemory, setEditKeyMemory] = useState('');
   const [editQuote, setEditQuote] = useState('');
-
-  useEffect(() => {
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(years));
-    } catch (e) {
-      console.error(e);
-    }
-  }, [years]);
 
   const handleOpenEdit = (yr: FriendshipYear, e: React.MouseEvent) => {
     e.stopPropagation();

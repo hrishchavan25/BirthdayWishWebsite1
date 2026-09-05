@@ -4,24 +4,12 @@ import { PHOTO_ASSET_BY_FILENAME, POLAROID_PHOTOS } from '../data/memories';
 import { ChevronLeft, ChevronRight, Upload, Plus, Trash2, Edit2, Maximize2, Camera, Check, X, Heart, Image as ImageIcon } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { audioEngine } from '../utils/audioSynth';
+import { useSharedStorage } from '../utils/sharedStorage';
 
 const STORAGE_KEY = 'ts_birthday_polaroids_v1';
 
 export const PhotoCarousel: React.FC = () => {
-  const [photos, setPhotos] = useState<PolaroidPhoto[]>(() => {
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved) {
-        return JSON.parse(saved).map((photo: PolaroidPhoto) => ({
-          ...photo,
-          url: PHOTO_ASSET_BY_FILENAME[photo.url] ?? photo.url
-        }));
-      }
-    } catch (e) {
-      console.error(e);
-    }
-    return POLAROID_PHOTOS;
-  });
+  const [photos, setPhotos] = useSharedStorage(STORAGE_KEY, POLAROID_PHOTOS);
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlay, setIsAutoPlay] = useState(false);
@@ -38,13 +26,11 @@ export const PhotoCarousel: React.FC = () => {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(photos));
-    } catch (e) {
-      console.error(e);
-    }
-  }, [photos]);
-
+    setPhotos(currentPhotos => currentPhotos.map(photo => ({
+      ...photo,
+      url: PHOTO_ASSET_BY_FILENAME[photo.url] ?? photo.url
+    })));
+  }, [setPhotos]);
   useEffect(() => {
     if (!isAutoPlay || photos.length === 0) return;
     const interval = setInterval(() => {

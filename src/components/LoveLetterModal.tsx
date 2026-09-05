@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { X, Heart, Edit3, Check, Mail } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { audioEngine } from '../utils/audioSynth';
+import { useSharedStorage } from '../utils/sharedStorage';
 
 interface LoveLetterModalProps {
   isOpen: boolean;
@@ -29,27 +30,11 @@ export const LoveLetterModal: React.FC<LoveLetterModalProps> = ({
   onClose,
   bestieName
 }) => {
-  const [letterContent, setLetterContent] = useState<string>(() => {
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved) return saved;
-    } catch (e) {
-      console.error(e);
-    }
-    return DEFAULT_LETTER;
-  });
+  const [letterContent, setLetterContent] = useSharedStorage(STORAGE_KEY, DEFAULT_LETTER);
 
   const [isEnvelopeOpen, setIsEnvelopeOpen] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [tempContent, setTempContent] = useState(letterContent);
-
-  useEffect(() => {
-    try {
-      localStorage.setItem(STORAGE_KEY, letterContent);
-    } catch (e) {
-      console.error(e);
-    }
-  }, [letterContent]);
 
   if (!isOpen) return null;
 

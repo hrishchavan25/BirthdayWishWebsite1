@@ -4,6 +4,7 @@ import { DEFAULT_WISHES } from '../data/memories';
 import { Heart, Send, Sparkles, User, MessageCircle, Calendar } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { audioEngine } from '../utils/audioSynth';
+import { useSharedStorage } from '../utils/sharedStorage';
 
 const STORAGE_KEY = 'ts_birthday_wishes_v1';
 
@@ -12,28 +13,12 @@ interface BirthdayWishesProps {
 }
 
 export const BirthdayWishes: React.FC<BirthdayWishesProps> = ({ bestieName }) => {
-  const [wishes, setWishes] = useState<BirthdayWish[]>(() => {
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved) return JSON.parse(saved);
-    } catch (e) {
-      console.error(e);
-    }
-    return DEFAULT_WISHES;
-  });
+  const [wishes, setWishes] = useSharedStorage(STORAGE_KEY, DEFAULT_WISHES);
 
   const [author, setAuthor] = useState('');
   const [relation, setRelation] = useState('');
   const [message, setMessage] = useState('');
   const [tag, setTag] = useState('Best Friend');
-
-  useEffect(() => {
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(wishes));
-    } catch (e) {
-      console.error(e);
-    }
-  }, [wishes]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

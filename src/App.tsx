@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Header } from './components/Header';
 import { HeroSection } from './components/HeroSection';
 import { FriendshipTimeline } from './components/FriendshipTimeline';
@@ -10,30 +10,15 @@ import { LoveLetterModal } from './components/LoveLetterModal';
 import { SparklesEffect } from './components/SparklesEffect';
 import { Footer } from './components/Footer';
 import { audioEngine } from './utils/audioSynth';
+import { useSharedStorage } from './utils/sharedStorage';
 
 const NAME_STORAGE_KEY = 'ts_birthday_bestie_name_v1';
 
 export function App() {
-  const [bestieName, setBestieName] = useState<string>(() => {
-    try {
-      const saved = localStorage.getItem(NAME_STORAGE_KEY);
-      if (saved && saved !== 'My Best Friend') return saved;
-    } catch (e) {
-      console.error(e);
-    }
-    return 'Vishiiiii';
-  });
+  const [bestieName, setBestieName] = useSharedStorage(NAME_STORAGE_KEY, 'Vishiiiii');
 
   const [isLetterModalOpen, setIsLetterModalOpen] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
-
-  useEffect(() => {
-    try {
-      localStorage.setItem(NAME_STORAGE_KEY, bestieName);
-    } catch (e) {
-      console.error(e);
-    }
-  }, [bestieName]);
 
   const handleUpdateName = (newName: string) => {
     setBestieName(newName);

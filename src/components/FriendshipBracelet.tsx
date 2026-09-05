@@ -25,6 +25,7 @@ import {
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { audioEngine } from '../utils/audioSynth';
+import { useSharedStorage } from '../utils/sharedStorage';
 
 const STORAGE_KEY = 'bestie_birthday_bracelets_charms_v2';
 
@@ -82,15 +83,7 @@ const COLOR_SCHEMES: Array<{ id: BraceletColorScheme; name: string; tag: string 
 ];
 
 export const FriendshipBracelet: React.FC = () => {
-  const [bracelets, setBracelets] = useState<FriendshipBraceletItem[]>(() => {
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved) return JSON.parse(saved);
-    } catch (e) {
-      console.error(e);
-    }
-    return DEFAULT_BRACELETS;
-  });
+  const [bracelets, setBracelets] = useSharedStorage(STORAGE_KEY, DEFAULT_BRACELETS);
 
   // Builder States
   const [customText, setCustomText] = useState('BESTIE 11 YRS');
@@ -109,14 +102,6 @@ export const FriendshipBracelet: React.FC = () => {
   const [selectedGiftBracelet, setSelectedGiftBracelet] = useState<FriendshipBraceletItem | null>(null);
   const [isAdvancedOpen, setIsAdvancedOpen] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
-
-  useEffect(() => {
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(bracelets));
-    } catch (e) {
-      console.error(e);
-    }
-  }, [bracelets]);
 
   // Color Styles Helper
   const getSchemeStyles = (scheme: BraceletColorScheme) => {
