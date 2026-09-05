@@ -63,14 +63,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       {/* Refined Baby Pink Ambient Glows */}
       <div className="absolute top-12 left-1/2 -translate-x-1/2 w-[88vw] max-w-5xl h-[440px] bg-gradient-to-r from-pink-300/35 via-rose-200/40 to-pink-100/45 rounded-full blur-3xl -z-10 pointer-events-none" />
 
-      {/* Elegant Baby Pink Anniversary Badge */}
-      <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-pink-100/90 backdrop-blur-md mb-6 shadow-2xs border border-pink-300/80">
-        <span className="w-2 h-2 rounded-full bg-[#db2777]" />
-        <span className="text-xs sm:text-sm font-semibold tracking-[0.25em] text-pink-900 uppercase font-sans">
-          The 11-Year Friendship Celebration
-        </span>
-      </div>
-
       {/* Main Heading */}
       <header className="max-w-4xl mx-auto mb-6 z-10">
         <h1 className="font-script text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-[#db2777] leading-[1.08] tracking-wide mb-2">
@@ -104,7 +96,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               title="Click to change name"
             >
               <span className="font-pinyon text-4xl sm:text-6xl md:text-7xl text-[#9d174d] italic font-semibold hover:opacity-90 transition-opacity">
-                to {bestieName}
+                {bestieName}
               </span>
               <button
                 onClick={(e) => {
@@ -120,11 +112,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             </div>
           )}
         </div>
-
-        {/* Subtitle */}
-        <p className="uppercase tracking-[0.3em] text-pink-700 text-xs sm:text-sm font-semibold mt-2 font-sans">
-          A Celebration of 11 Unforgettable Years
-        </p>
 
         <p className="font-editorial italic text-xl sm:text-2xl md:text-3xl text-pink-950 max-w-2xl mx-auto mt-4 leading-relaxed">
           &ldquo;Through every season and milestone, having you as my best friend has been life&apos;s greatest gift.&rdquo;

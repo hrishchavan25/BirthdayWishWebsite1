@@ -94,6 +94,7 @@ export const FriendshipTimeline: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
           {years.map((yr) => {
             const isToday = yr.yearNum === 11;
+            const fitFullPhoto = yr.yearNum === 1 || yr.yearNum === 2 || yr.yearNum === 7;
 
             return (
               <div
@@ -137,7 +138,7 @@ export const FriendshipTimeline: React.FC = () => {
                       src={yr.photoUrl}
                       alt={yr.title}
                       referrerPolicy="no-referrer"
-                      className="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500"
+                      className={`w-full h-full ${fitFullPhoto ? 'object-contain bg-pink-50' : 'object-cover'} group-hover/img:scale-105 transition-transform duration-500`}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-70" />
                     <span className="absolute bottom-2 left-3 right-3 text-white text-[11px] font-sans font-medium truncate">
@@ -205,7 +206,7 @@ export const FriendshipTimeline: React.FC = () => {
                 src={activeYearModal.photoUrl}
                 alt={activeYearModal.title}
                 referrerPolicy="no-referrer"
-                className="w-full h-full object-cover"
+                className={`w-full h-full ${activeYearModal.yearNum === 1 || activeYearModal.yearNum === 2 || activeYearModal.yearNum === 7 ? 'object-contain bg-pink-50' : 'object-cover'}`}
               />
               <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent p-4">
                 <p className="text-white text-xs sm:text-sm font-sans">

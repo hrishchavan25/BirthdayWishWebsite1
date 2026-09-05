@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { PolaroidPhoto } from '../types';
-import { POLAROID_PHOTOS } from '../data/memories';
+import { PHOTO_ASSET_BY_FILENAME, POLAROID_PHOTOS } from '../data/memories';
 import { ChevronLeft, ChevronRight, Upload, Plus, Trash2, Edit2, Maximize2, Camera, Check, X, Heart, Image as ImageIcon } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { audioEngine } from '../utils/audioSynth';
@@ -11,7 +11,12 @@ export const PhotoCarousel: React.FC = () => {
   const [photos, setPhotos] = useState<PolaroidPhoto[]>(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved) return JSON.parse(saved);
+      if (saved) {
+        return JSON.parse(saved).map((photo: PolaroidPhoto) => ({
+          ...photo,
+          url: PHOTO_ASSET_BY_FILENAME[photo.url] ?? photo.url
+        }));
+      }
     } catch (e) {
       console.error(e);
     }

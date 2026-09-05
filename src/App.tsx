@@ -17,11 +17,11 @@ export function App() {
   const [bestieName, setBestieName] = useState<string>(() => {
     try {
       const saved = localStorage.getItem(NAME_STORAGE_KEY);
-      if (saved) return saved;
+      if (saved && saved !== 'My Best Friend') return saved;
     } catch (e) {
       console.error(e);
     }
-    return 'My Best Friend';
+    return 'Vishiiiii';
   });
 
   const [isLetterModalOpen, setIsLetterModalOpen] = useState(false);
