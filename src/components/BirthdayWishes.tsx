@@ -79,10 +79,6 @@ export const BirthdayWishes: React.FC<BirthdayWishesProps> = ({ bestieName }) =>
           </h2>
 
           <p className="font-editorial italic text-xl sm:text-2xl text-pink-950 mb-3">
-            &ldquo;Leave a permanent birthday dedication to celebrate her 11-year milestone&rdquo;
-          </p>
-
-          <p className="font-sans text-xs sm:text-sm text-pink-900/80 max-w-md mx-auto">
             Write your personalized wish for {bestieName} to read and cherish on her special day.
           </p>
         </div>
